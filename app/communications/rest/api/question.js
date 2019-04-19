@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('./../../../controllers/questionController.js');
+const controller = require('./../../../controllers/question');
 
 // Create
 router.post('/', async (req, res) => {

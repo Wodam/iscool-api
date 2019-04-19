@@ -7,6 +7,6 @@ router.get('/api/', function (req, res) {
   res.send('Hello World!')
 })
 
-router.use('/api/question', require('./questionRoutes'));
+router.use('/api/question', require('./question'));
 
 module.exports = router;
