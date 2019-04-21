@@ -1,11 +1,6 @@
-# API - IsCool!
-
-***
 <p align="center">
 <img src="https://raw.githubusercontent.com/wiki/IsCoolTech/tis3/img/iscool.png" width="300">
 </p>
-
-***
 
 ## :ledger: Notes before installing
 - This is just an API, you can get the full GUI on [this repository](https://github.com/Wodam/iscool-web).
