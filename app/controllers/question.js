@@ -3,32 +3,33 @@
 const database = require('./../database');
 
 exports.create = async (values) => {
-	return database.create('Questao', values.questao).then(questao => {
-		if (values.alternativas) {
-			values.alternativas.map(alternativa => {
-				alternativa.id_questao = questao.dataValues.id_questao;
-				return database.create('Alternativa', alternativa);
-			});
-		}
-	})
+	return await database.create('Question', values);
+	// return await database.create('Questao', values).then(questao => {
+	// 	if (values.alternativas) {
+	// 		values.alternativas.map(alternativa => {
+	// 			alternativa.id_questao = questao.dataValues.id_questao;
+	// 			return database.create('Alternativa', alternativa);
+	// 		});
+	// 	}
+	// })
 };
 
 exports.retrieve = async (values) => {
-	return await database.retrieve('Questao', values);
+	return await database.retrieve('Question', values);
 };
 
 exports.update = async (id, values) => {
-	return await database.update('Questao', id, values);
+	return await database.update('Question', id, values);
 };
 
 exports.delete = async (values) => {
-	return await database.delete('Questao', values);
+	return await database.delete('Question', values);
 };
 
 exports.list = async (values) => {
-	let questions = await database.list('Questao', values);
-	for (var i = 0; i < questions.length; i++) {
-		questions[i].dataValues.alternativas = await database.list('Alternativa', {where: {id_questao: questions[i].dataValues.id_questao}});
-	}
+	let questions = await database.list('Question', values);
+	// for (var i = 0; i < questions.length; i++) {
+	// 	questions[i].dataValues.alternativas = await database.list('Alternativa', {where: {id_questao: questions[i].dataValues.id_questao}});
+	// }
 	return questions;
 };
