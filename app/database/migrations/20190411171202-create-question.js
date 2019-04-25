@@ -21,8 +21,8 @@ module.exports = {
 		});
 
 		Question.associate = models => {
-			Question.hasMany(models.Alternativa, {
-				as: 'alternativas',
+			Question.hasMany(models.Choice, {
+				as: 'choices',
 				foreignKey: 'id_question'
 			});
 		}
