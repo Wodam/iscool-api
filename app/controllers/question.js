@@ -3,7 +3,12 @@
 const database = require('./../database');
 
 exports.create = async (values) => {
-	return await database.create('Question', values);
+	return await database.create('Question', values).then(question => {
+		if (values.choices) {
+			values.choices.id_question = question.id_question;
+			return database.create('Choice',values.choices);
+		}
+	});
 	// return await database.create('Questao', values).then(questao => {
 	// 	if (values.alternativas) {
 	// 		values.alternativas.map(alternativa => {
