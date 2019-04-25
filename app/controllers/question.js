@@ -5,18 +5,13 @@ const database = require('./../database');
 exports.create = async (values) => {
 	return await database.create('Question', values).then(question => {
 		if (values.choices) {
-			values.choices.id_question = question.id_question;
-			return database.create('Choice',values.choices);
+			for (var choice in values.choices) {
+				// console.log();
+				values.choices[choice].id_question = question.id_question;
+				database.create('Choice',values.choices[choice]);
+			}
 		}
 	});
-	// return await database.create('Questao', values).then(questao => {
-	// 	if (values.alternativas) {
-	// 		values.alternativas.map(alternativa => {
-	// 			alternativa.id_questao = questao.dataValues.id_questao;
-	// 			return database.create('Alternativa', alternativa);
-	// 		});
-	// 	}
-	// })
 };
 
 exports.retrieve = async (values) => {
