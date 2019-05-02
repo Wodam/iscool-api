@@ -35,6 +35,17 @@ class Database {
 		}
 	};
 
+  async createN (model, params = {}) {
+    try {
+      console.log(model);
+      console.log(params);
+      return await this.models[model].bulkCreate(params).then(console.log("inseriu"))
+    } catch (error) {
+      console.log('[Database] Error on create \n', error);
+      return error;
+    }
+  };
+
 	async retrieve (model, id, params = {}) {
 		try {
 			return await this.models[model].findByPk(id, params);
@@ -73,6 +84,8 @@ class Database {
 			return error;
 		}
   };
+
+
 
 	async list (model, params = {}) {
 		try {
