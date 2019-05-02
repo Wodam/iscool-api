@@ -3,15 +3,16 @@
 const database = require('./../database');
 
 exports.create = async (values) => {
-	return await database.create('Question', values).then(question => {
-		if (values.choices) {
-			for (var choice in values.choices) {
-				// console.log();
-				values.choices[choice].id_question = question.id_question;
-				database.create('Choice',values.choices[choice]);
-			}
-		}
-	});
+	return await database.create('Question', values);
+	// return await database.create('Question', values).then(question => {
+	// 	if (values.choices) {
+	// 		for (var choice in values.choices) {
+	// 			// console.log();
+	// 			values.choices[choice].id_question = question.id_question;
+	// 			database.create('Choice',values.choices[choice]);
+	// 		}
+	// 	}
+	// });
 };
 
 exports.retrieve = async (values) => {
@@ -23,7 +24,10 @@ exports.update = async (id, values) => {
 };
 
 exports.delete = async (values) => {
-	return await database.delete('Question', values);
+	return await database.deleteChilds('Choice',{ where: {id_question: values} }).then(() =>{
+		return database.delete('Question', values);
+	});
+
 };
 
 exports.list = async (values) => {

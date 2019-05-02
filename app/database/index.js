@@ -64,6 +64,16 @@ class Database {
 		}
   };
 
+  async deleteChilds (model, query = {}) {
+		try {
+			let data = await this.models[model];
+			return await data.destroy(query);
+		} catch (error) {
+			console.log('[Database] Error on delete \n', error);
+			return error;
+		}
+  };
+
 	async list (model, params = {}) {
 		try {
 			return await this.models[model].findAll(params);
