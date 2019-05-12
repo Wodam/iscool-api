@@ -17,7 +17,11 @@ module.exports = {
 			},
 			description_question: {
 				type: DataTypes.TEXT
-			}
+			},
+      id_test: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
 		});
 
 		Question.associate = models => {
@@ -26,6 +30,13 @@ module.exports = {
 				foreignKey: 'id_question'
 			});
 		}
+
+    Question.associate = models => {
+      Question.belongsTo(models.Test, {
+        as: 'Test',
+        foreignKey: 'id_test'
+      });
+    }
 
 		return Question;
   },

@@ -1,14 +1,11 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Test', {
-      id: {
+    const Test = queryInterface.createTable('Test', {
+      id_test: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id_teste: {
         type: Sequelize.INTEGER
       },
       description_test: {
@@ -23,6 +20,14 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    Test.associate = models => {
+      Test.hasMany(models.Question, {
+        as: 'questions',
+        foreignKey: 'id_test'
+      });
+    }
+
+    return Test;
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Test');
