@@ -20,7 +20,7 @@ module.exports = {
 			},
       id_test: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
       }
 		});
 

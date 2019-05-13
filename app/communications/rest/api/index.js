@@ -9,5 +9,6 @@ router.get('/api/', function (req, res) {
 
 router.use('/api/question', require('./question'));
 router.use('/api/choice', require('./choice'));
+router.use('/api/test', require('./test'));
 
 module.exports = router;
