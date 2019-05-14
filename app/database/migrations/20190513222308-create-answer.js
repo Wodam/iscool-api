@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    const Answer = queryInterface.createTable('Answers', {
+    const Answer = queryInterface.createTable('Answer', {
       marked: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
@@ -41,11 +41,9 @@ module.exports = {
         foreignKey: 'id_test'
       });
     }
-
-
     return Answer;
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Answers');
+    return queryInterface.dropTable('Answer');
   }
 };

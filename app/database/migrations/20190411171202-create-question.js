@@ -31,12 +31,6 @@ module.exports = {
 			});
 		}
 
-    Question.associate = models => {
-      Question.belongsTo(models.Test, {
-        as: 'Test',
-        foreignKey: 'id_test'
-      });
-    }
 
 		return Question;
   },

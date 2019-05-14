@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       as: 'test',
       foreignKey: 'id_test'
     });
+    }
   Answer.removeAttribute('id');
   return Answer;
 };

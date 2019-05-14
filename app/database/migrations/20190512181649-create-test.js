@@ -12,12 +12,7 @@ module.exports = {
         type: Sequelize.TEXT
       }
     });
-    Test.associate = models => {
-      Test.hasMany(models.Question, {
-        as: 'questions',
-        foreignKey: 'id_test'
-      });
-    }
+
 
     return Test;
   },
