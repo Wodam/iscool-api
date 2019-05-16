@@ -39,7 +39,7 @@ class Database {
     try {
       console.log(model);
       console.log(params);
-      return await this.models[model].bulkCreate(params).then(console.log("inseriu"))
+      return await this.models[model].bulkCreate(params)
     } catch (error) {
       console.log('[Database] Error on create \n', error);
       return error;
