@@ -4,11 +4,15 @@ const database = require('./../database');
 
 exports.create = async (values) => {
 	// return await database.create('Answer', values);
-	return await database.list('Choice', values.id_question).then(choices =>{
+	var choice = {};
+	choice.where = values.id_test;
+	choice.where = values.id_question;
+	return await database.list('Choice', choice).then(choices =>{
 		for (var choice in choices) {
-			var answer = values;
-			answer.id_choice = choice.id_choice;
-			database.create('Answer', answer);
+			var answer = {};
+			answer.choices[choice] = values;
+			answer.choices[choice].id_choice = choice.id_choice;
+			database.createN('Answer', answer.choices);
 		}
 	});
 
