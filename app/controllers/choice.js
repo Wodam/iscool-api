@@ -9,7 +9,7 @@ exports.create = async (values) => {
 	// 			values.choices[choice].id_question = question.id_question;
 	// 			database.create('Choice',values.choices[choice]);
 	// 		}
-	return await database.createN('Choice', values.choices);
+	return await database.createN('Choice', values);
 };
 
 exports.retrieve = async (values) => {

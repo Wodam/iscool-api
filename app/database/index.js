@@ -35,11 +35,9 @@ class Database {
 		}
 	};
 
-  async createN (model, params = {}) {
+  async createN (model, values, params = {}) {
     try {
-      console.log(model);
-      console.log(params);
-      return await this.models[model].bulkCreate(params)
+      return await this.models[model].bulkCreate(values)
     } catch (error) {
       console.log('[Database] Error on create \n', error);
       return error;
