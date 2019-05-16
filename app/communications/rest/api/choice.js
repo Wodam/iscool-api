@@ -45,7 +45,8 @@ router.delete('/:id', async (req, res) => {
 // List
 router.get('/', async (req, res) => {
 	try {
-		res.send(await controller.list(req.body))
+		// JSON parse becaus params return an JSON
+		res.send(await controller.list({where: JSON.parse(req.query.where)}))
 	} catch (e) {
 		res.status(500).send(e)
 	}
