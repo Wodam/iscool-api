@@ -35,6 +35,15 @@ class Database {
 		}
 	};
 
+  async createN (model, values, params = {}) {
+    try {
+      return await this.models[model].bulkCreate(values)
+    } catch (error) {
+      console.log('[Database] Error on create \n', error);
+      return error;
+    }
+  };
+
 	async retrieve (model, id, params = {}) {
 		try {
 			return await this.models[model].findByPk(id, params);
@@ -63,6 +72,18 @@ class Database {
 			return error;
 		}
   };
+
+  async deleteChilds (model, query = {}) {
+		try {
+			let data = await this.models[model];
+			return await data.destroy(query);
+		} catch (error) {
+			console.log('[Database] Error on delete \n', error);
+			return error;
+		}
+  };
+
+
 
 	async list (model, params = {}) {
 		try {

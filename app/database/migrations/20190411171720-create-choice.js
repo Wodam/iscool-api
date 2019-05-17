@@ -2,35 +2,35 @@
 
 module.exports = {
   up: (queryInterface, DataTypes) => {
-		const Alternativa = queryInterface.createTable('Alternativa', {
-			id_alternativa: {
+		const Choice = queryInterface.createTable('Choice', {
+			id_choice: {
 				type: DataTypes.INTEGER,
 				autoIncrement: true,
 				primaryKey: true
 			},
-			veracidade: {
+			trueness_choice: {
 				type: DataTypes.CHAR
 			},
-			desc_alternativa: {
+			description_choice: {
 				type: DataTypes.TEXT
 			},
-			id_questao: {
+			id_question: {
 				type: DataTypes.INTEGER,
 				allowNull: false
 			}
 		});
 
-		Alternativa.associate = models => {
-			Alternativa.belongsTo(models.Questao, {
-				as: 'questao',
-				foreignKey: 'id_questao'
+		Choice.associate = models => {
+			Choice.belongsTo(models.Question, {
+				as: 'question',
+				foreignKey: 'id_question'
 			});
 		}
 
-		return Alternativa;
+		return Choice;
   },
 
   down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable('Alternativa')
+		return queryInterface.dropTable('Choice')
   }
 };
