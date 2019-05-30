@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+			name_test: {
+				allowNull: false,
+				type: Sequelize.TEXT
+			},
       description_test: {
         type: Sequelize.TEXT
       }

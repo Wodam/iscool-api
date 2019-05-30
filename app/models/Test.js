@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    name_test: {
+			allowNull: false,
+      type: DataTypes.TEXT
+    },
     description_test: {
       type: DataTypes.TEXT
     }
