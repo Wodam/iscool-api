@@ -42,10 +42,23 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
+// Delete where
+router.delete('/', async (req, res) => {
+	try {
+		// JSON parse becaus params return an JSON
+		console.log({where: JSON.parse(req.query.where)})
+		res.sendStatus(await controller.delete({where: JSON.parse(req.query.where)}))
+	} catch (e) {
+		console.log(e)
+		res.status(500).send(e)
+	}
+});
+
 // List
 router.get('/', async (req, res) => {
 	try {
-		res.send(await controller.list(req.body))
+		// JSON parse becaus params return an JSON
+		res.send(await controller.list({where: JSON.parse(req.query.where)}))
 	} catch (e) {
 		res.status(500).send(e)
 	}

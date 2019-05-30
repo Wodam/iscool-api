@@ -73,6 +73,16 @@ class Database {
 		}
   };
 
+	async deleteWhere (model, params = {}) {
+		try {
+			console.log("Params: ", params)
+			return await this.models[model].destroy(params);
+		} catch (error) {
+			console.log('[Database] Error on delete \n', error);
+			return error;
+		}
+  };
+
   async deleteChilds (model, query = {}) {
 		try {
 			let data = await this.models[model];
@@ -82,8 +92,6 @@ class Database {
 			return error;
 		}
   };
-
-
 
 	async list (model, params = {}) {
 		try {

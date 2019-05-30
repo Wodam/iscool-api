@@ -25,7 +25,8 @@ exports.update = async (id, values) => {
 };
 
 exports.delete = async (values) => {
-	return database.delete('Answer', values);
+	console.log("Values: ", values)
+	return await database.deleteWhere('Answer', values);
 };
 
 exports.list = async (values) => {
