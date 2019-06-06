@@ -22,11 +22,17 @@ var server = require('http').createServer(express);
 
 // APP
 express.use(morgan('[:date[web]] [:response-time ms] [:status] :method :url'));
-express.use(bodyParser.json());
-express.use(bodyParser.urlencoded({
-  extended: false
-}));
+// express.use(bodyParser.json());
+// express.use(bodyParser.urlencoded({
+//   extended: false
+// }));
+express.use(bodyParser.json({limit: '50mb'}));
+express.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 express.use(cors());
+
+// Middleware for express Form Data
+const formidableMiddleware = require('express-formidable');
+express.use(formidableMiddleware());
 
 // ROUTES
 express.use(require('./app/communications/rest/api'));
