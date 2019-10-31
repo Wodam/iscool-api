@@ -19,7 +19,7 @@
     "express-formidable": "^1.2.0",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.2.8"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",
